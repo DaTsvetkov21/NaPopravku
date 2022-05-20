@@ -1,8 +1,7 @@
 import random
 
 list_words = ['python', 'java', 'swift', 'javascript']
-list_alpha = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x',
-              'c', 'v', 'b', 'n', 'm']
+list_alpha = 'abcdefghijklmnopqrstuvwxyz'
 won = 0
 lost = 0
 
