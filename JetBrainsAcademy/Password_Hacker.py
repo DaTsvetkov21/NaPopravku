@@ -74,7 +74,7 @@ def send_login_and_password():
             found_password += password_alpha
             print(json.dumps({"login": login, "password": found_password}))
             break
-
+#
 
 parser = argparse.ArgumentParser()
 parser.add_argument('IP_address')
